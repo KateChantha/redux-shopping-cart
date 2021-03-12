@@ -14,12 +14,12 @@ const CartContainer = ({ cart = [] }) => { ...}
 - if there is something in the cartItems array, then map over item and display each CardItem UI.
 
 2. In App.js
-2.1 createStore
+- (2.1) createStore
 - invoke the createStore from redux api
 - and store the value of createStore in variable "store"
 - createStore is expected first argument, which is a cb function that used to update store, a.k.a the reducer function.
 - createStore second argument is the initail store
-2.2 shoppingCartReducer function
+- (2.2) shoppingCartReducer function
 - expect 2 arguments - state(state before the update) and action
 - returns updated or old state (always return state as a default incase there is no action match)
 
@@ -31,4 +31,8 @@ const CartContainer = ({ cart = [] }) => { ...}
 ```
 store.getState()
 store.dispatch({type: "DECREASE"})
+```
+4. store a string of action type as a variable to avoid typo.
+```
+const DECREASE = "DECREASE"
 ```
