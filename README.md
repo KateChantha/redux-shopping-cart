@@ -32,7 +32,22 @@ const CartContainer = ({ cart = [] }) => { ...}
 store.getState()
 store.dispatch({type: "DECREASE"})
 ```
-4. store a string of action type as a variable to avoid typo.
+4. In actions.js, store a string of action type as a variable to avoid typo.
 ```
 const DECREASE = "DECREASE"
 ```
+5. now *** connect react to redux store ***
+6. react-redux 
+- Provider - wraps app at the root component. now every childrens will able to access store, dispatch method, dispatch the actions.
+- connect (HOC)- used in component to get value from state / store. 
+- connect has a fews arguments most commonly naming are mapStateToProps cb function and mapdispatchToProps cb function. And those cb functions will have an access to the store
+- example in the Navbar, will get the "amount" props as the only props that we map in the mapStateToProps function
+```
+const Navbar = ({ amount }) => { ... }
+
+const mapStateToProps = state => {
+  return { amount: state.amount }
+}
+export default connect(mapStateToProps)(Navbar);
+```
+7. set up dispatch method

@@ -7,41 +7,27 @@ import cartItems from "./cart-items";
 
 // redux stuff
 import {createStore} from "redux";
-import {DECREASE, INCREASE} from './actions';
+// import {DECREASE, INCREASE} from './actions';
+import shopingCartReducer from './reducer';
+import {Provider} from 'react-redux';
+
   // initail store
 const initailStore = { 
-  count: 3,
-  mame: "john"
-}
-
-  // reducer
-function shopingCartReducer(state, action) {
-  console.log({state, action})
-  if (action.type === DECREASE) {
-    // return a new object
-    return {...state, count: state.count - 1}
-  }
-  if (action.type === INCREASE) {
-    // return a new object
-    return {...state, count: state.count + 1}
-  }
- 
-  return state
+  cart: cartItems,
+  total: 0,
+  amount: 5
 }
 
 const store = createStore(shopingCartReducer, initailStore)
-store.dispatch({type: DECREASE})
-store.dispatch({type: INCREASE})
-
 
 function App() {
   // cart setup
 
   return (
-    <main>
-      <Navbar cart={store.getState()}/>
+    <Provider store={store}>
+      <Navbar />
       <CartContainer cart={cartItems} />
-    </main>
+    </Provider>
   );
 }
 
