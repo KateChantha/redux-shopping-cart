@@ -30,7 +30,7 @@ const CartContainer = ({ cart = [] }) => { ...}
 - NOTE: test out console log result of calling...
 ```
 store.getState()
-store.dispatch({type: "DECREASE"})
+store.dispatch({ type: "DECREASE" })
 ```
 4. In actions.js, store a string of action type as a variable to avoid typo.
 ```
@@ -51,3 +51,7 @@ const mapStateToProps = state => {
 export default connect(mapStateToProps)(Navbar);
 ```
 7. set up dispatch method
+- dispatch method is a props that come from Provider that all the children get automaticly.
+```
+const CartContainer = ({ cart = [], total, dispatch}) => { ... }
+```
