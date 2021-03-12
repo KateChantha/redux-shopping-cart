@@ -11,10 +11,10 @@ import {createStore} from "redux";
 import shopingCartReducer from './reducer';
 import {Provider} from 'react-redux';
 
-  // initail store
+  // initail store 
 const initailStore = { 
   cart: cartItems,
-  total: 0,
+  total: 12,
   amount: 5
 }
 
@@ -26,7 +26,7 @@ function App() {
   return (
     <Provider store={store}>
       <Navbar />
-      <CartContainer cart={cartItems} />
+      <CartContainer />
     </Provider>
   );
 }
