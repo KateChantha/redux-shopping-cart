@@ -8,7 +8,7 @@ import cartItems from "./cart-items";
 // redux stuff
 import {createStore} from "redux";
   // initail store
-const initailStore = { count: 0}
+const initailStore = { count: 3}
   // reducer
 function shopingCartReducer(state, action) {
   console.log({state, action})
@@ -16,13 +16,14 @@ function shopingCartReducer(state, action) {
 }
 
 const store = createStore(shopingCartReducer, initailStore)
+store.dispatch({type: "DECREASE"})
 
 function App() {
   // cart setup
 
   return (
     <main>
-      <Navbar />
+      <Navbar cart={store.getState()}/>
       <CartContainer cart={cartItems} />
     </main>
   );
