@@ -123,3 +123,49 @@ useEffect(() => {
 ```
 total = parseFloat(total.toFixed(2));
 ```
+### ==== REFACTOR ====
+#### Refactor 1
+- change placement of the logic to check item amount === 1 
+- remove that logic out off the reducer at DECREASE action (see reducer_refactor.js)
+- instead, place the logic at the onClick decrease button in CartItem_refactor
+1. in CartItem (see CartItem_refactor.js )
+- if the current amount is 1, sipatch with REMOVE action - to remove item from the cart
+- if the currenet amount greater than 1, dispatch with DECREASE action
+```
+   <button 
+    onClick={() => {
+      return amount === 1
+            ? remove()
+            : decrease()
+    }}
+  >
+
+```
+
+#### Refactor 2
+- set up TOGGLE_AMOUT action that will taking care of both INCREASE & DECREASE amount
+- now, arrow up and down button will dispatch wtih TOGGLE_AMOUNT 
+```
+ {/* increase amount */}
+    <button 
+      onClick={() => toggle("inc")}
+    >
+
+  {/* decrease amount */}
+  <button 
+    onClick={() => {
+      return amount === 1
+            ? remove()
+            : toggle("dec")
+    }}
+  >
+```
+```
+const mapDispatchToPorps = (dispatch, ownProps) => {
+  const { id } = ownProps
+  return {
+    remove: () => dispatch({ type: REMOVE, payload: {id} }),
+    toggle: (delta) => dispatch({ type: TOGGLE_AMOUNT, payload: {id, delta}})
+  };
+}
+```
