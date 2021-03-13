@@ -110,3 +110,16 @@ export default connect(null, mapDispatchToPorps)(CartItem)
 same result as
 <button onClick={ remove }>remove</button>
 ```
+9. in CartContainer.js
+- when something updating in the cart, we want to recalculate the total.
+- set up dispacth to GET_TOTALS action in useEffect. useEffect will run when anything/ state that is change - no dependency.
+```
+useEffect(() => {
+    dispatch({type: GET_TOTALS})
+  })
+```
+10. in reducer.js
+- fix the price total with minimum total of 2 decimal
+```
+total = parseFloat(total.toFixed(2));
+```
