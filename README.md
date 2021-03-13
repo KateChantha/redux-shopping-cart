@@ -169,3 +169,44 @@ const mapDispatchToPorps = (dispatch, ownProps) => {
   };
 }
 ```
+#### Refactor 3
+- in App.js refactor by removing initailStore that was passed as a 2nd argument
+```
+  // const store = createStore(shopingCartReducer, initailStore )
+  const store = createStore(shopingCartReducer)
+  
+```
+- when remove initailStore from create store, then store/state becomes undefined. It will cause the error for example ** cannot read property 'amount' of undefined **
+- to fix that
+- in reducer.js , pass the initailStore as a defualt state
+```
+function shopingCartReducer(state = initailStore, action) { ... }
+
+```
+- To set up the intialState as a default state in the reducer will helps scale the app by seperating to multiple reducers
+- each reducer will set it's own initail state/data to whatever it needs.
+
+#### Refactor 4
+- create function - action creator
+```
+export const REMOVE = "REMOVE" 
+export const removeItem = (id) => {
+  return {type:REMOVE, payload: {id}}
+}
+```
+- in CartItem_refactor.js - import removeItem action creator
+```
+import { removeItem } from '../actions';
+```
+- dispatach the removeItem in mapDispatchToProps
+```
+const mapDispatchToPorps = (dispatch, ownProps) => {
+  const { id } = ownProps;
+  return {
+    remove: dispatch(removeItem(id))
+  };
+}
+
+export default connect(null, mapDispatchToPorps)(CartItem);
+
+```

@@ -1,11 +1,19 @@
 import { CLEAR_CART, REMOVE, GET_TOTALS, TOGGLE_AMOUNT } from './actions';
 
+// items / data
+import cartItems from "./cart-items";
+// initail store 
+const initailStore = { 
+  cart: cartItems,
+  total: 0,
+  amount: 0
+}
 
 /**
  * @param {*} state - { amount: num, cart: [], total: num }
  * @param {*} action 
  */
-function shopingCartReducer(state, action) {
+function shopingCartReducer(state = initailStore, action) {
   switch(action.type) {
     case CLEAR_CART:
       // return a new object
