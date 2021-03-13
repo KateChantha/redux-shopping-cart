@@ -112,11 +112,11 @@ same result as
 ```
 9. in CartContainer.js
 - when something updating in the cart, we want to recalculate the total.
-- set up dispacth to GET_TOTALS action in useEffect. useEffect will run when anything/ state that is change - no dependency.
+- set up dispacth to GET_TOTALS action in useEffect and has cart as dependency (but we include dispatch just for the warning from react)
 ```
 useEffect(() => {
     dispatch({type: GET_TOTALS})
-  })
+  }, [cart])
 ```
 10. in reducer.js
 - fix the price total with minimum total of 2 decimal
@@ -208,5 +208,18 @@ const mapDispatchToPorps = (dispatch, ownProps) => {
 }
 
 export default connect(null, mapDispatchToPorps)(CartItem);
+
+```
+#### set up Redux Dev Tools
+[redux-devtools-extension github](https://github.com/zalmoxisus/redux-devtools-extension)
+
+1.1 Basic store
+For a basic Redux store simply add:
+- in App.js
+```
+ const store = createStore(
+   reducer, /* preloadedState, */
++  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+ );
 
 ```

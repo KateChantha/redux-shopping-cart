@@ -10,7 +10,7 @@ import shopingCartReducer from './reducer';
 import {Provider} from 'react-redux';
 
 // refactor by removing initail store that was passed as a 2nd argument
-const store = createStore(shopingCartReducer)
+const store = createStore(shopingCartReducer,  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__())
 
 function App() {
   // cart setup

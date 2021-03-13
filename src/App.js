@@ -2,8 +2,6 @@ import React from "react";
 // components
 import Navbar from "./components/Navbar";
 import CartContainer from "./components/CartContainer";
-// items / data
-import cartItems from "./cart-items";
 
 // redux stuff
 import {createStore} from "redux";
@@ -11,14 +9,7 @@ import {createStore} from "redux";
 import shopingCartReducer from './reducer';
 import {Provider} from 'react-redux';
 
-  // initail store 
-const initailStore = { 
-  cart: cartItems,
-  total: 12,
-  amount: 5
-}
-
-const store = createStore(shopingCartReducer, initailStore)
+const store = createStore(shopingCartReducer,  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__())
 
 function App() {
   // cart setup
