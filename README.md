@@ -1,4 +1,9 @@
 ## Shopping Cart using Redux
+#### Functionality
+1. display all items in the cart
+2. options to increase or decrease amount of each item,update each item amount, update total amount of items in the cart and recalculate total dollars amount.
+3. If item amount becomes 0, then item will be automatically remove from the display.
+4. option to remove item form the cart. 
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
